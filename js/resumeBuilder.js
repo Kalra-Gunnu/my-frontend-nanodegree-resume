@@ -13,7 +13,7 @@ var bio = {
 	welcomeMessage: "Welcome to my Bio-Data",
 	skills : ["Awesome","Machine Learning","Web Development"],
 	bioPic : "images/myPhoto.jpg"
-}
+};
 
 bio.display = function () {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -45,14 +45,14 @@ bio.display = function () {
 	// skills
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
-		for (skill in bio.skills) {
+		for (var skill in bio.skills) {
 			if (bio.skills.hasOwnProperty(skill)) {
 				formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
 				$("#skills").append(formattedSkill);
 			}
 		}
 	}
-}
+};
 
 var education = {
 	schools :[
@@ -94,12 +94,12 @@ var education = {
 			url : "http://www.coursera.com/courses/ml" 
 		}
 	]
-}
+};
 
 education.display = function () {
 	if (education.schools.length > 0 || education.onlineCourses.length > 0) {
 		// start the HTML
-		for (edu in education.schools) {
+		for (var edu in education.schools) {
 			if (education.schools.hasOwnProperty(edu)) {
 				$("#education").append(HTMLschoolStart);
 				
@@ -112,7 +112,7 @@ education.display = function () {
 		}
 		// start the HTML
 		$(".education-entry:last").append(HTMLonlineClasses);
-		for (edu in education.onlineCourses) {
+		for (var edu in education.onlineCourses) {
 			if (education.onlineCourses.hasOwnProperty(edu)) {
 				formattedHtml = HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title);
 				$(".education-entry:last").append(formattedHtml);
@@ -121,7 +121,7 @@ education.display = function () {
 			}
 		}
 	}
-}
+};
 
 var work = {
 	jobs : [
@@ -138,10 +138,10 @@ var work = {
 			description : "Responsible for the working of Media and Publicity Committee."
 		}
 	]
-}
+};
 
 work.display=function(){
-	for(job in work.jobs) {
+	for(var job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -157,7 +157,7 @@ work.display=function(){
 
 		
 	}
-}
+};
 
 var projects = {
 	projects : [
@@ -174,10 +174,10 @@ var projects = {
 			images : "https://www.wolfram.com/mathematica/new-in-10/enhanced-image-processing/HTMLImages.en/handwritten-digits-classification/smallthumb_10.gif"
 		}
 	]
-}
+};
 
 projects.display =function() {
-	for(proj in projects.projects) {
+	for(var proj in projects.projects) {
 		$("#projects").append(HTMLprojectStart);
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[proj].title);
 		$(".project-entry:last").append(formattedTitle);
@@ -188,7 +188,7 @@ projects.display =function() {
 		var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[proj].images);
 		$(".project-entry:last").append(formattedImage);
 	}
-}
+};
 
 /*$(document).click(function(loc) {
 	var x=loc.pageX;
@@ -230,7 +230,7 @@ var menu = {
 			"link": "mailto:gundeepgunnu@gmail.com"
 		}
 	]
-}
+};
 
 menu.display = function () {
     'use strict';
@@ -243,7 +243,7 @@ menu.display = function () {
           // console.log(entry);
           $("#navmenu:last").append(entry);
     }
-}
+};
 
 menu.display();
 bio.display();
