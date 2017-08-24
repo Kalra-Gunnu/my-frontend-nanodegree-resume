@@ -112,7 +112,7 @@ education.display = function () {
 		}
 		// start the HTML
 		$(".education-entry:last").append(HTMLonlineClasses);
-		for (var edu in education.onlineCourses) {
+		for (edu in education.onlineCourses) {
 			if (education.onlineCourses.hasOwnProperty(edu)) {
 				formattedHtml = HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title);
 				$(".education-entry:last").append(formattedHtml);
