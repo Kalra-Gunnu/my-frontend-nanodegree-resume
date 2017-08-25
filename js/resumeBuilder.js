@@ -12,40 +12,32 @@ var bio = {
 	},
 	welcomeMessage: "Welcome to my Bio-Data",
 	skills : ["Awesome","Machine Learning","Web Development"],
-	bioPic : "images/myPhoto.jpg"
+	biopic : "images/myPhoto.jpg"
 };
 
 bio.display = function () {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-	var f_photo = HTMLbioPic.replace("%data%", bio.bioPic);
+	var f_photo = HTMLbioPic.replace("%data%", bio.biopic);
 	var f_email = HTMLemail.replace("%data%", "<a class=\"contacts-link\" href=\"mailto:" + bio.contacts.email + "\">" + bio.contacts.email + "</a>");
 	var f_location = HTMLlocation.replace("%data%", bio.contacts.location);
 	var f_github = HTMLgithub.replace("%data%" , bio.contacts.github);
 	var f_mobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	var f_welcome_msg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+	var formattedContacts = f_mobile + f_email + f_github + f_location;
 	// Display stuff please
 	$("#header").append(formattedName);
 	$("#header").append(formattedRole);
-	// contacts
 	$("#header").append(f_photo);
 	$("#header").append(f_welcome_msg);
 	HTMLContacts = '<dl id="topContacts"></dl>';
-	$("#header").append(HTMLContacts);
-	$("#header").append(f_location);
-	$("#header").append(f_email);
-	$("#header").append(f_github);
-	$("#header").append(f_mobile);
 	HTMLContacts = '<dl id="footerContacts"></dl>';
-	$("#footerContacts").append(HTMLContacts);
-	$("#footerContacts").append(f_mobile);
-	$("#footerContacts").append(f_email);
-	$("#footerContacts").append(f_github);
-	$("#footerContacts").append(f_location);
+	$("#header","#footerContacts").append(HTMLContacts);
+	$("#header","#footerContacts").append(formattedContacts);
 	// skills
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
-		for (var skill in bio.skills) {
+		skills.forEach (function(skill)) {
 			if (bio.skills.hasOwnProperty(skill)) {
 				formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
 				$("#skills").append(formattedSkill);
@@ -58,25 +50,25 @@ var education = {
 	schools :[
 		{
 			name : "Rainbow School",
-			city : "Saharanpur,UP,India",
+			location : "Saharanpur,UP,India",
 			degree : "High-School",
-			dates : 2011,
+			dates : "2011",
 			url : "http://example.com"
 		},
 		{
 			name : "Rainbow School",
-			city : "Saharanpur,UP,India",
+			location : "Saharanpur,UP,India",
 			degree : "Matriculation",
 			majors :["Physics","Chemistry","Mathematics"],
-			dates : 2013,
+			dates : "2013",
 			url : "http://example.com"
 		},
 		{
 			name : "Jaypee University of Information Technology(JUIT)",
-			city : "Waknaghat(Solan),HP,India",
+			location : "Waknaghat(Solan),HP,India",
 			degree : "B.Tech",
 			majors :["Electronics and Communication Engineering"],
-			dates : 2017,
+			dates : "2017",
 			url : "http://example.com"
 		},
 	],
@@ -84,13 +76,13 @@ var education = {
 		{
 			title : "Front End Web Development",
 			school : "Udacity",
-			dates : 2017,
+			dates : "2017",
 			url : "http://www.udacity.com/nanodegrees/nd001"
 		},
 		{
 			title : "Machine Learning",
 			school : "Coursera",
-			dates : 2017,
+			dates : "2017",
 			url : "http://www.coursera.com/courses/ml" 
 		}
 	]
@@ -99,10 +91,9 @@ var education = {
 education.display = function () {
 	if (education.schools.length > 0 || education.onlineCourses.length > 0) {
 		// start the HTML
-		for (var edu in education.schools) {
+		education.schools.forEach (function(edu)) {
 			if (education.schools.hasOwnProperty(edu)) {
 				$("#education").append(HTMLschoolStart);
-				
 				$(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[edu].name));
 				$(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].dates));
 				$(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[edu].city));
@@ -112,7 +103,7 @@ education.display = function () {
 		}
 		// start the HTML
 		$(".education-entry:last").append(HTMLonlineClasses);
-		for (edu in education.onlineCourses) {
+		education.onlineCourses.forEach (function(edu)) {
 			if (education.onlineCourses.hasOwnProperty(edu)) {
 				formattedHtml = HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title);
 				$(".education-entry:last").append(formattedHtml);
@@ -128,12 +119,14 @@ var work = {
 		{
 			employer : "Infosys",
 			title : "Junior Engineer",
+			location : "Mysore,India",
 			dates : "Janaury'18-Future",
 			description : "Junior Engineer responsible for small-small problems."
 		},
 		{
 			employer : "JYC",
 			title : "Head MNP",
+			location : "Shimla,India",
 			dates : "Aug'15-Jun'16",
 			description : "Responsible for the working of Media and Publicity Committee."
 		}
@@ -141,7 +134,7 @@ var work = {
 };
 
 work.display=function(){
-	for(var job in work.jobs) {
+	work.jobs.forEach(function(job)) {
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -163,13 +156,13 @@ var projects = {
 	projects : [
 		{
 			title : 'Sound Meter',
-			dates : 2015,
+			dates : "2015",
 			description : "With the help of a microcontroller we find out what is the intensity of sound and what all frequencies are present in the sound.",
 			images : "https://lh5.ggpht.com/J5bJ4DNidDKOjz-Tm_WQKBtBQULZRAxvoZbL4KA00e9xmTyoGDH-G1VFSpVpMLC6Frw=w300"
 		},
 		{
 			title : "Hand Written Character Recognition",
-			dates : 2017,
+			dates : "2017",
 			description : "With the help of Artificial Neural Networks and Machine Learning, digitalise the hand written lines and words.",
 			images : "https://www.wolfram.com/mathematica/new-in-10/enhanced-image-processing/HTMLImages.en/handwritten-digits-classification/smallthumb_10.gif"
 		}
@@ -177,7 +170,7 @@ var projects = {
 };
 
 projects.display =function() {
-	for(var proj in projects.projects) {
+	projects.projects.forEach(function(proj)) {
 		$("#projects").append(HTMLprojectStart);
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[proj].title);
 		$(".project-entry:last").append(formattedTitle);
