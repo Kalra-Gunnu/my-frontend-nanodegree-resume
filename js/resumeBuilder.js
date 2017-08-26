@@ -45,7 +45,7 @@ bio.display = function () {
 				formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
 				$("#skills").append(formattedSkill);
 			}
-		})
+		});
 	}
 };
 
@@ -101,7 +101,7 @@ education.display = function () {
 				$(".education-entry:last").append(HTMLschoolLocation.replace("%data%", edu.location));
 				$(".education-entry:last").append(HTMLschoolDegree.replace("%data%", edu.degree));
 				$(".education-entry:last").append(HTMLschoolMajor.replace("%data%", edu.majors));
-		})
+		});
 		// start the HTML
 		$(".education-entry:last").append(HTMLonlineClasses);
 		(education.onlineCourses).forEach (function(edu) {
@@ -111,7 +111,7 @@ education.display = function () {
 				$(".education-entry:last").append(HTMLonlineSchool.replace('%data%', edu.school));
 				$(".education-entry:last").append(HTMLonlineDates.replace('%data%', edu.dates));
 			}
-		})
+		});
 	}
 };
 
@@ -147,7 +147,7 @@ work.display=function(){
 		$(".work-entry:last").append(formattedLocation);
 		var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
 		$(".work-entry:last").append(formattedDescription);
-	})
+	});
 };
 
 var projects = {
@@ -178,7 +178,7 @@ projects.display =function() {
 		$(".project-entry:last").append(formattedDescription);
 		var formattedImage = HTMLprojectImage.replace("%data%", proj.images);
 		$(".project-entry:last").append(formattedImage);
-	})
+	});
 };
 
 /*$(document).click(function(loc) {
