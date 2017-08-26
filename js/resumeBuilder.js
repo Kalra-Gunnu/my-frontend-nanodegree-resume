@@ -105,12 +105,10 @@ education.display = function () {
 		// start the HTML
 		$(".education-entry:last").append(HTMLonlineClasses);
 		(education.onlineCourses).forEach (function(edu) {
-			if (education.onlineCourses.hasOwnProperty(edu)) {
-				formattedHtml = HTMLonlineTitle.replace("%data%", edu.title);
-				$(".education-entry:last").append(formattedHtml);
-				$(".education-entry:last").append(HTMLonlineSchool.replace('%data%', edu.school));
-				$(".education-entry:last").append(HTMLonlineDates.replace('%data%', edu.dates));
-			}
+			formattedHtml = HTMLonlineTitle.replace("%data%", edu.title);
+			$(".education-entry:last").append(formattedHtml);
+			$(".education-entry:last").append(HTMLonlineSchool.replace('%data%', edu.school));
+			$(".education-entry:last").append(HTMLonlineDates.replace('%data%', edu.dates));
 		});
 	}
 };
